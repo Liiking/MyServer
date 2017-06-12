@@ -8,7 +8,7 @@ import java.util.Date;
  * 博客实体类
  */
 @Entity
-@Table(name = "blog", schema = "myapi", catalog = "")
+@Table(name = "blog", schema = "testdb", catalog = "")
 public class BlogEntity {
     private int id;
     private String title;
@@ -27,7 +27,7 @@ public class BlogEntity {
     }
 
     @Basic
-    @Column(name = "title", nullable = true, length = 100)
+    @Column(name = "title", nullable = false, length = 100)
     public String getTitle() {
         return title;
     }
@@ -47,7 +47,7 @@ public class BlogEntity {
     }
 
     @Basic
-    @Column(name = "pub_date", nullable = true)
+    @Column(name = "pub_date", nullable = false)
     public Date getPubDate() {
         return pubDate;
     }
@@ -81,7 +81,7 @@ public class BlogEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     public UserEntity getUserByUserId() {
         return userByUserId;
     }

@@ -1,12 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: liheyao
-  Date: 17/6/9
-  Time: 11:36
+  Date: 17/6/12
+  Time: 16:19
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>博客猿－注册</title>
+    <title>${blog.title}</title>
 
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -28,22 +28,31 @@
 </head>
 <body>
 <div class="container">
-    <h1>快速注册</h1>
+    <h1>文章详情</h1>
     <hr/>
-    <form:form action="/admin/users/addUser" method="post" commandName="userInfo" role="form">
-        <%--<input type="hidden" id="id" name="id"/>--%>
-        <div class="form-group">
-            <label for="username">用户名：</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
-        </div>
-        <div class="form-group">
-            <label for="password">密&nbsp;&nbsp;码：</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">提交</button>
-        </div>
-    </form:form>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <td>${blog.id}</td>
+        </tr>
+        <tr>
+            <th>标题</th>
+            <td>${blog.title}</td>
+        </tr>
+        <tr>
+            <th>作者</th>
+            <td>${blog.userByUserId.username}</td>
+        </tr>
+        <tr>
+            <th>内容</th>
+            <td>${blog.content}</td>
+        </tr>
+        <tr>
+            <th>发布时间</th>
+            <td><fmt:formatDate value="${blog.pubDate}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
+        </tr>
+    </table>
 </div>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->

@@ -1,12 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: liheyao
-  Date: 17/6/9
-  Time: 11:07
+  Date: 17/6/12
+  Time: 15:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -14,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>用户管理</title>
+    <title>博客列表</title>
 
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -28,37 +29,39 @@
 </head>
 <body>
 <div class="container">
-    <h1>博客猿-在线用户列表</h1>
+    <h1>博客系统-博客管理</h1>
     <hr/>
 
-    <h3>所有用户 <%--<a href="/admin/users/add" type="button" class="btn btn-primary btn-sm">添加</a>--%></h3>
+    <h3>所有博客 <a href="/admin/blogs/add" type="button" class="btn btn-primary btn-sm">写博客</a></h3>
 
     <!-- 如果用户列表为空 -->
-    <c:if test="${empty userList}">
+    <c:if test="${empty blogList}">
         <div class="alert alert-warning" role="alert">
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>暂无用户，请先 <a href="/admin/users/add" type="button" class="btn btn-primary btn-sm">注册</a>
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>您还没有发布任何博客哦，请先<a href="/admin/blogs/add" type="button" class="btn btn-primary btn-sm">写一篇</a>
         </div>
     </c:if>
 
     <!-- 如果用户列表非空 -->
-    <c:if test="${!empty userList}">
+    <c:if test="${!empty blogList}">
         <table class="table table-bordered table-striped">
             <tr>
-                <th>用户ID</th>
-                <th>用户名</th>
-                <th>密码</th>
+                <th>ID</th>
+                <th>标题</th>
+                <th>作者</th>
+                <th>发布日期</th>
                 <th>操作</th>
             </tr>
 
-            <c:forEach items="${userList}" var="user">
+            <c:forEach items="${blogList}" var="blog">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
+                    <td>${blog.id}</td>
+                    <td>${blog.title}</td>
+                    <td>${blog.userByUserId.username}</td>
+                    <td><fmt:formatDate value="${blog.pubDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                     <td>
-                        <a href="/admin/users/show/${user.id}" type="button" class="btn btn-sm btn-success">详情</a>
-                        <a href="/admin/users/update/${user.id}" type="button" class="btn btn-sm btn-warning">修改</a>
-                        <a href="/admin/users/delete/${user.id}" type="button" class="btn btn-sm btn-danger">删除</a>
+                        <a href="/admin/blogs/show/${blog.id}" type="button" class="btn btn-sm btn-success">详情</a>
+                        <a href="/admin/blogs/update/${blog.id}" type="button" class="btn btn-sm btn-warning">修改</a>
+                        <a href="/admin/blogs/delete/${blog.id}" type="button" class="btn btn-sm btn-danger">删除</a>
                     </td>
                 </tr>
             </c:forEach>
