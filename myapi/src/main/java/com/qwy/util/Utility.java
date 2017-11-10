@@ -11,6 +11,9 @@ import java.security.NoSuchAlgorithmException;
  * 工具类
  */
 public class Utility {
+
+    public static boolean isDebug = true;//  debug模式下为API
+
     /**
      * 获取MD5加密后的字符串
      * @param src

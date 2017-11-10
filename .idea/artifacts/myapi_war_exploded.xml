@@ -40,6 +40,7 @@
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
+          <element id="library" level="project" name="Maven: org.json:json:20170516" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -1,8 +1,12 @@
 package com.qwy.controller;
 
+import com.mysql.cj.xdevapi.JsonArray;
+import com.qwy.model.BlogEntity;
 import com.qwy.model.UserEntity;
+import com.qwy.repository.BlogRepository;
 import com.qwy.repository.UserRepository;
 import com.qwy.util.Utility;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,12 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import sun.misc.BASE64Encoder;
-import sun.security.provider.MD5;
-
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -39,6 +37,15 @@ public class MainController {
     }
 
     /**
+     * 拦截请求进入首页
+     * @return
+     */
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "test";
+    }
+
+    /**
      * 查询数据库中所有用户
      * @param modelMap
      * @return
@@ -50,6 +57,9 @@ public class MainController {
 
         // 将所有记录传递给要返回的jsp页面，放在userList当中
         modelMap.addAttribute("userList", userList);
+//        if(Utility.isDebug){
+//            return "[]";// TODO test
+//        }
 
         // 返回pages目录下的admin/users.jsp页面
         return "admin/users";

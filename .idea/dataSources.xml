@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - myapi@localhost" uuid="ba29de9f-c9f3-4ff2-8eff-3185b94e68a5">
+    <data-source source="LOCAL" name="testdb@localhost" uuid="05d05ae4-6be8-4bb0-b6a0-f1e017e1ad44">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/myserver</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/testdb</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="defaultPersistenceUnit/Hibernate" uuid="45385e98-813e-4686-bd82-2c9f09b4165b">
+    <data-source source="LOCAL" name="defaultPersistenceUnit/Hibernate" uuid="dcc02fb8-2877-4cdd-972e-aea6fb50aab7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
